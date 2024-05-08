@@ -17,7 +17,7 @@ export class ProductListComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
-      this.listProducts();
+      this.listProducts();      
     })
   }
 
@@ -35,7 +35,10 @@ export class ProductListComponent {
 
     //now get the products for the given category id
     this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => this.products = data
+      data => {
+        this.products = data;
+        console.log(data);
+      }
     )
   }
 
